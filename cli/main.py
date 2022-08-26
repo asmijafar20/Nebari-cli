@@ -11,7 +11,7 @@ def init(CloudProvider: str = typer.Argument("", help="Name of your Cloud Provid
     DomainName: str = typer.Argument("", help="DNS name for your project"),
     AuthProvider: str = typer.Argument(["github","auth0","password"],envvar=["AUTH0_DOMAIN", "AUTH0_CLIENTID", "AUTH0_CLIENT_SECRET"], help="Authentication provider"),
     NameSpace: str = typer.Argument("dev", help="Namespace"),
-    Ci_Provider: str = typer.Argument(["none","github-actions","gitlab-ci"], help="CI-Provider"),
+    Ci_Provider: str = typer.Argument(["none","github-actions"], help="CI-Provider"),
     Repository: str = typer.Argument("",envvar=["GITHUB_USERNAME", "GITHUB_TOKEN"], help="Repository Name"),
     TerraformState: str = typer.Argument(["remote","local","existing"], help="Terraform State"),
     KubernetesVersion: str = typer.Argument("most recent version available",envvar=["QHUB_K8S_VERSION"], help="Kubernetes Version"),
