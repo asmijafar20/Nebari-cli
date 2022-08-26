@@ -3,14 +3,15 @@ from rich.prompt import Prompt
 import os;
 from rich import print
 
-def main():
+
+def init_main():
     print("Initializing the Nebari 🚀 ")
     print("user don't need to set default in init command if you wish to customize something please have a look to qhub --help command and their values")
 
-    cloud_provider = typer.prompt("What's your Cloud Provider?")
+    cloud_provider = click.prompt("What's your Cloud Provider?", type=click.choice(["gcp","aws"]))
 
-    if cloud_provider == "AWS" and not os.environ.get('AWS_ACCESS_KEY_ID') and not os.environ.get("AWS_SECRET_ACCESS_KEY"):
-        print("Please generate your AWS keys at this link: [link=https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html][/link]")
+    if cloud_provider == "AWS" and not (os.environ.get('AWS_ACCESS_KEY_ID') and os.environ.get("AWS_SECRET_ACCESS_KEY")):
+        print("Please generate your AWS keys at this link:[blue]https://www.github.com/[/blue]")
         aws_access_key_id = typer.prompt("Please enter your AWS_ACCESS_KEY_ID")
         aws_secret_access_key = typer.prompt("Please enter your AWS_SECRET_ACCESS_KEY")
 
